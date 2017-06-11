@@ -20,8 +20,12 @@
 	})
 	
 	function delete2(){
-	confirm("정말 탈퇴시키시겠습니까?");
-	document.memberFrm.submit();
+	if(confirm("정말 탈퇴시키시겠습니까?")){
+		document.memberFrm.submit();
+	}else{
+		return false;
+	}
+	
 }
 	
 </script>

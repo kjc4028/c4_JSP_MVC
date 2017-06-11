@@ -3,6 +3,8 @@
 <%@page import="bbsDto.Article"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -48,18 +50,29 @@ th {
 	background-color: yellow;
 }
 
-table {
+/* table {
 position:relative;
 	top:150px;
 	margin-left:auto;
 	margin-right:auto;
 	text-align: center;
+} */
+#full{
+position: relative;
+	
+	
 }
 
+#table1{
+position: absolute;
+	top:150px;
+	left:300px;
+	text-align: center;
+}
 #search1{
-position: relative;
-  top: 140px;
-  left: 950px;
+position: absolute;
+  top: 120px;
+  left: 770px;
   width: 500px;
 }
 #head {
@@ -181,17 +194,19 @@ if(request.getParameter("pageNumber") != null){
 
 
 	<jsp:include page="home.jsp"></jsp:include>
-
+<div id = "full">
+<div id = "search1">
 	<form action="/c4/articleSearch.do">
-		<span id = "search1" >
+	
 	<input type="text" name = "search"/>
 	
 	<input type="submit" value = "search"/>
-	</span>
-</form>
 
+</form>
+</div>
+<div id = "table1">
 	<form name="frm" id="frm" action="/c4/articleDelete.do" method="post">
-		<table  border="1" id = "table1">
+		<table  border="1" >
 			<tr>
 				<th id="head" width="50">&nbsp;<input type="checkbox" id="allCheck">&nbsp;
 				</th>
@@ -218,8 +233,9 @@ if(request.getParameter("pageNumber") != null){
 				<td><input type="checkbox" name="rowcheck" id="rowcheck"
 					value="<%=list.get(i).getBbsID()%>"></td>
 				<td><%=list.get(i).getBbsID()%></td>
-				<td><a
-					href="/c4/contentView.do?bbsID=<%=list.get(i).getBbsID()%>"><%=list.get(i).getTitle()%></a>&nbsp;<span
+				<td><c:forEach begin="1" end ="<%=list.get(i).getbIndent()%>">-></c:forEach>
+				
+				<a href="/c4/contentView.do?bbsID=<%=list.get(i).getBbsID()%>"><%=list.get(i).getTitle()%></a>&nbsp;<span
 					style="color: red"><%= hot %></span></td>
 				<td><%=list.get(i).getUserID()%></td>
 				<td><%=list.get(i).getRegdate()%></td>
@@ -260,7 +276,8 @@ if(request.getParameter("pageNumber") != null){
 		</table>
 
 		</form>
-	
+		</div>
+	</div>
 	
 	
 

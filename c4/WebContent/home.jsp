@@ -69,7 +69,7 @@ background-color: gray;
 		<%if(userID.equals("whd4028")){ %>
 <nav>
 	<div id="main">
-	<span id = "a" ><a href=""><img src="images/jc1.png" width="70" height="50"></a></span>
+	<span id = "a" ><a href="index.jsp"><img src="images/jc1.png" width="70" height="50"></a></span>
 	
 		<span id="a" title="전체회원 조회로 이동"> <a href="/c4/allSelect.do">전체회원조회</a>&nbsp;|&nbsp;
 		</span>

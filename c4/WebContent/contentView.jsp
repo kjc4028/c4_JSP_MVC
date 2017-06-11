@@ -35,7 +35,6 @@
 
 		Article article = (Article)request.getAttribute("article");
 	%>
-	<c:set var = "a" value="5"/>
 		<c:set var = "a" value="<%= article %>"/>
 	[JSTL 이용한 출력]<br>
 		글제목:${a.getTitle()} <br>
@@ -52,6 +51,7 @@
 	 글내용 :<%=bbs.getContent()%><br>
 	  
 	
-	<a href="bbsList.jsp">목록으로</a>
+	<a href="bbsList.jsp">목록으로</a><br>
+	<a href="/c4/ArticleReplyForm.do?bbsID=${a.getBbsID()}">답글</a>
 </body>
 </html>
