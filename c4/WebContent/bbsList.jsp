@@ -86,6 +86,8 @@ position: absolute;
 		String userID = null;
 		if (session.getAttribute("id2") != null) {
 			userID = (String) session.getAttribute("id2");
+			System.out.println("게시판 세션 :"+userID);
+
 		}
 	%>
 	<%
@@ -194,6 +196,9 @@ if(request.getParameter("pageNumber") != null){
 
 
 	<jsp:include page="home.jsp"></jsp:include>
+	
+	<%if(userID != null){ %>
+	<%if(userID.equals("whd4028")){ %>
 <div id = "full">
 <div id = "search1">
 	<form action="/c4/articleSearch.do">
@@ -278,6 +283,176 @@ if(request.getParameter("pageNumber") != null){
 		</form>
 		</div>
 	</div>
+	<%} %>
+	<% if(!userID.equals("whd4028")) { %>
+	
+	<div id = "full">
+<div id = "search1">
+	<form action="/c4/articleSearch.do">
+	
+	<input type="text" name = "search"/>
+	
+	<input type="submit" value = "search"/>
+
+</form>
+</div>
+<div id = "table1">
+	<form name="frm" id="frm" action="/c4/articleDelete.do" method="post">
+		<table  border="1" >
+			<tr>
+				
+				<th id="head" width="100">게시물 번호</th>
+				<th id="head" width="200">제목</th>
+				<th id="head" width="100">작성자</th>
+				<th id="head" width="180">등록일자</th>
+				<th id="head" width="50">조회수</th>
+			</tr>
+			<%
+				Article dto = new Article();
+				ArticleDao dao = new ArticleDao();
+				ArrayList<Article> list = dao.getList(pageNumber);
+				String hot = "";
+				for (int i = 0; i < list.size(); i++) {
+					
+					if(list.get(i).getReadcnt()>20){
+						hot = "[hot!!!]";
+					}else if(list.get(i).getReadcnt()<=20){
+						hot = " ";
+					}
+			%>
+			<tr>
+				
+				<td><%=list.get(i).getBbsID()%></td>
+				<td><c:forEach begin="1" end ="<%=list.get(i).getbIndent()%>">-></c:forEach>
+				
+				<a href="/c4/contentView.do?bbsID=<%=list.get(i).getBbsID()%>"><%=list.get(i).getTitle()%></a>&nbsp;<span
+					style="color: red"><%= hot %></span></td>
+				<td><%=list.get(i).getUserID()%></td>
+				<td><%=list.get(i).getRegdate()%></td>
+				<td><%=list.get(i).getReadcnt()%></td>
+			</tr>
+			<%
+				}
+			%>
+			
+			<tr>
+			<td colspan="6"><input type="button" value="글작성하기" onclick="goWrite()"> 
+
+
+		
+		<a href="bbsList.jsp?pageNumber=1">[맨앞으로]</a>
+<a href="bbsList.jsp?pageno=<%=pageNumber -1 %>">[이전]</a> 
+<%for(int i =page_sno;i<=page_eno;i++){%>
+	<a href="bbsList.jsp?pageNumber=<%=i %>">
+		<%if(pageno == i){ %>
+			[<%=i %>]
+		<%}else{ %>
+			<%=i %>
+		<%} %>
+	</a> 
+<%--	콤마	 --%>	
+	<%if(i<page_eno){ %>
+		,
+	<%} %>
+<%} %>
+ 
+<a href="bbsList.jsp?pageNumber=<%=pageNumber +1 %>" >[다음]</a>
+<a href="bbsList.jsp?pageNumber=<%=total_page %>">[맨뒤로]</a>
+
+		</td></tr>
+
+		</table>
+
+		</form>
+		</div>
+	</div>
+	<%} %>
+	<%} %>
+	
+	<% if(userID == null){ %>
+		
+	<div id = "full">
+<div id = "search1">
+	<form action="/c4/articleSearch.do">
+	
+	<input type="text" name = "search"/>
+	
+	<input type="submit" value = "search"/>
+
+</form>
+</div>
+<div id = "table1">
+	<form name="frm" id="frm" action="/c4/articleDelete.do" method="post">
+		<table  border="1" >
+			<tr>
+				
+				<th id="head" width="100">게시물 번호</th>
+				<th id="head" width="200">제목</th>
+				<th id="head" width="100">작성자</th>
+				<th id="head" width="180">등록일자</th>
+				<th id="head" width="50">조회수</th>
+			</tr>
+			<%
+				Article dto = new Article();
+				ArticleDao dao = new ArticleDao();
+				ArrayList<Article> list = dao.getList(pageNumber);
+				String hot = "";
+				for (int i = 0; i < list.size(); i++) {
+					
+					if(list.get(i).getReadcnt()>20){
+						hot = "[hot!!!]";
+					}else if(list.get(i).getReadcnt()<=20){
+						hot = " ";
+					}
+			%>
+			<tr>
+				
+				<td><%=list.get(i).getBbsID()%></td>
+				<td><c:forEach begin="1" end ="<%=list.get(i).getbIndent()%>">-></c:forEach>
+				
+				<a href="/c4/contentView.do?bbsID=<%=list.get(i).getBbsID()%>"><%=list.get(i).getTitle()%></a>&nbsp;<span
+					style="color: red"><%= hot %></span></td>
+				<td><%=list.get(i).getUserID()%></td>
+				<td><%=list.get(i).getRegdate()%></td>
+				<td><%=list.get(i).getReadcnt()%></td>
+			</tr>
+			<%
+				}
+			%>
+			
+			<tr>
+			<td colspan="6"><input type="button" value="글작성하기" onclick="goWrite()"> 
+
+
+		
+		<a href="bbsList.jsp?pageNumber=1">[맨앞으로]</a>
+<a href="bbsList.jsp?pageno=<%=pageNumber -1 %>">[이전]</a> 
+<%for(int i =page_sno;i<=page_eno;i++){%>
+	<a href="bbsList.jsp?pageNumber=<%=i %>">
+		<%if(pageno == i){ %>
+			[<%=i %>]
+		<%}else{ %>
+			<%=i %>
+		<%} %>
+	</a> 
+<%--	콤마	 --%>	
+	<%if(i<page_eno){ %>
+		,
+	<%} %>
+<%} %>
+ 
+<a href="bbsList.jsp?pageNumber=<%=pageNumber +1 %>" >[다음]</a>
+<a href="bbsList.jsp?pageNumber=<%=total_page %>">[맨뒤로]</a>
+
+		</td></tr>
+
+		</table>
+
+		</form>
+		</div>
+	</div>
+	
+		<%} %>
 	
 	
 

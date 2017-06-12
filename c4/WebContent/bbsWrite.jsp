@@ -4,6 +4,11 @@
 
 <html>
 <head>
+<script type="text/javascript">
+function goList(){
+	location.href="/c4/bbsList.jsp";
+} 
+</script>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>글 작성 페이지</title>
 </head>
@@ -15,8 +20,9 @@
 <tr><th colspan="2">게시판 글쓰기 양식</th></tr>
 <tr><th>제 목</th><td><input type="text" name = "title" size = "30"><td></tr>
 <tr><th>내 용</th><td><textarea name ="content" style="height: 200px; width: 200px;"></textarea></td></tr>
-<tr><td></td><td><input type ="submit" value = "글 등록하기"></td></tr>
+<tr><td></td><td><input type ="submit" value = "글 등록하기"><input type="button" value = "목록으로" onclick="goList()"></td></tr>
 </table>
 </form>
 </body>
 </html>
+

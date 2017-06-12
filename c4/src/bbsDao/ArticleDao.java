@@ -19,7 +19,6 @@ import jdbc.JdbcUtil;
 public class ArticleDao {
 
 	public ArticleDao() {
-
 	}
 
 	public int totalBbs() throws NamingException, SQLException{

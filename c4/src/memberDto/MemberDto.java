@@ -7,6 +7,9 @@ String id;
 String password;
 
 
+public MemberDto() {
+	// TODO Auto-generated constructor stub
+}
 
 public MemberDto(String name, String id, String password) {
 	super();

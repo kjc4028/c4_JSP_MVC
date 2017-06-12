@@ -30,6 +30,8 @@
 			script.println("location.href='bbsList.jsp'");
 			script.println("</script>");
 		}
+		
+		
 		Article bbs = new ArticleDao().getBbs(bbsID,true);
 		System.out.println(bbs.getReadcnt());
 

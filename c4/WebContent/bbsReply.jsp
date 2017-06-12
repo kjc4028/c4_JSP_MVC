@@ -23,12 +23,14 @@
 	Article article = (Article)request.getAttribute("article");
 
 	%>
+	
+	<jsp:include page="home.jsp"></jsp:include>
 			<c:set var = "a" value="<%= article %>"/>
 
 	<form action="/c4/ArticleReply.do" method="post">
-<input type="text" name = "writer_name" value=<%=userID %>><br>
-<input type="text" name = "title"><br>
-<input type="text" name = "content"><br>
+아이디 : <input type="text" name = "writer_name" value=<%=userID %>><br>
+제목 : <input type="text" name = "title"><br>
+내용 : <textarea  name = "content" rows="10" cols="50"></textarea>
 <input type="hidden" name = "bGroup" value="${a.getbGroup()}"><br>
 <input type="hidden" name = "bStep" value="${a.getbStep()}"><br>
 <input type="hidden" name = "bIndent" value="${a.getbIndent()}"><br>

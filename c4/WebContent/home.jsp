@@ -103,6 +103,9 @@ background-color: gray;
 		<br><span id = "b"><%= userID %> 님 로그인중 </span>&nbsp;&nbsp;
 		<span id = "b"><a href="logout.jsp">로그아웃 </a> </span>
 		
+&nbsp;&nbsp;<span id = "b"><a href="/c4/Mypage.do?id=<%=userID %>">마이페이지 </a> </span>
+		
+		
 	</div>
 </nav>
 <%} %>

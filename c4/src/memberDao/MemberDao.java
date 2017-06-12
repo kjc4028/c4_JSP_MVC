@@ -54,6 +54,67 @@ public class MemberDao {
 
 		return dtos;
 	}
+	
+	public MemberDto memberInfo(String mid) throws SQLException, NamingException{
+		Connection conn = DBCPConnection.getConnection();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		MemberDto dto = new MemberDto();
+		
+
+		try {
+			pstmt=conn.prepareStatement("select * from member where id = ?");
+			pstmt.setString(1, mid);
+			
+			rs = pstmt.executeQuery();
+			if(rs.next()){
+				String name = rs.getString("name");
+				String id = rs.getString("id");
+				String password = rs.getString("password");
+				
+			dto.setId(id);
+			dto.setName(name);
+			dto.setPassword(password);
+				
+				
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			JdbcUtil.close(pstmt);
+			JdbcUtil.close(conn);
+
+		}
+		return dto;
+
+
+
+
+	}
+	
+	public void memberModify(String name, String id) throws NamingException, SQLException{
+		
+		Connection conn = DBCPConnection.getConnection();
+		PreparedStatement pstmt = null;
+		
+		try {
+			pstmt=conn.prepareStatement("update member set name = ? where id = ?");
+			pstmt.setString(1, name);
+			pstmt.setString(2, id);
+
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			JdbcUtil.close(pstmt);
+			JdbcUtil.close(conn);
+
+		}
+	}
+		
+	
 	//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 	public void join(String name, String id, String password) throws SQLException, NamingException{
@@ -80,7 +141,7 @@ public class MemberDao {
 
 
 	}
-
+ 
 
 	public String idCheck(String id) throws SQLException, NamingException{
 		Connection conn = DBCPConnection.getConnection();
