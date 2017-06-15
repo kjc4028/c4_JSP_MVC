@@ -4,12 +4,14 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	<%@ taglib prefix= "fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 	
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 <script>
+
 function goWrite(){
 	location.href="/c4/goWrite.do";
 }
@@ -235,7 +237,8 @@ if(request.getParameter("pageNumber") != null){
 					}
 			%>
 			<tr>
-				<td><input type="checkbox" name="rowcheck" id="rowcheck"
+<%-- 			<%=list.get(i).getRegdate()%>
+ --%>				<td><input type="checkbox" name="rowcheck" id="rowcheck"
 					value="<%=list.get(i).getBbsID()%>"></td>
 				<td><%=list.get(i).getBbsID()%></td>
 				<td><c:forEach begin="1" end ="<%=list.get(i).getbIndent()%>">-></c:forEach>
@@ -243,8 +246,15 @@ if(request.getParameter("pageNumber") != null){
 				<a href="/c4/contentView.do?bbsID=<%=list.get(i).getBbsID()%>"><%=list.get(i).getTitle()%></a>&nbsp;<span
 					style="color: red"><%= hot %></span></td>
 				<td><%=list.get(i).getUserID()%></td>
-				<td><%=list.get(i).getRegdate()%></td>
-				<td><%=list.get(i).getReadcnt()%></td>
+				<c:set var="date" value="<%=list.get(i).getRegdate()%>"/>
+				
+				
+				<td>${fn:substring(date,0,4)}년
+				${fn:substring(date, 5, 7)}월
+			${fn:substring(date, 8, 10)}일 <br>
+			${fn:substring(date, 11, 13)}시
+			${fn:substring(date, 14, 16)}분</td>
+				<td><%=list.get(i).getReadcnt()%> </td>
 			</tr>
 			<%
 				}
@@ -328,7 +338,14 @@ if(request.getParameter("pageNumber") != null){
 				<a href="/c4/contentView.do?bbsID=<%=list.get(i).getBbsID()%>"><%=list.get(i).getTitle()%></a>&nbsp;<span
 					style="color: red"><%= hot %></span></td>
 				<td><%=list.get(i).getUserID()%></td>
-				<td><%=list.get(i).getRegdate()%></td>
+				<c:set var="date" value="<%=list.get(i).getRegdate()%>"/>
+				
+				
+				<td>${fn:substring(date,0,4)}년
+				${fn:substring(date, 5, 7)}월
+			${fn:substring(date, 8, 10)}일 <br>
+			${fn:substring(date, 11, 13)}시
+			${fn:substring(date, 14, 16)}분</td>
 				<td><%=list.get(i).getReadcnt()%></td>
 			</tr>
 			<%
@@ -413,7 +430,14 @@ if(request.getParameter("pageNumber") != null){
 				<a href="/c4/contentView.do?bbsID=<%=list.get(i).getBbsID()%>"><%=list.get(i).getTitle()%></a>&nbsp;<span
 					style="color: red"><%= hot %></span></td>
 				<td><%=list.get(i).getUserID()%></td>
-				<td><%=list.get(i).getRegdate()%></td>
+				<c:set var="date" value="<%=list.get(i).getRegdate()%>"/>
+				
+				
+				<td>${fn:substring(date,0,4)}년
+				${fn:substring(date, 5, 7)}월
+			${fn:substring(date, 8, 10)}일  <br>
+			${fn:substring(date, 11, 13)}시
+			${fn:substring(date, 14, 16)}분</td>
 				<td><%=list.get(i).getReadcnt()%></td>
 			</tr>
 			<%

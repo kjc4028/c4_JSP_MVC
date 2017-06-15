@@ -9,10 +9,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.sun.java.swing.plaf.windows.resources.windows;
+
 import memberDao.MemberDao;
+import util.JCInterface;
 
 @WebServlet("/joinAction.do")
-public class JoinService extends HttpServlet {
+public class JoinService extends HttpServlet   {
 	private static final long serialVersionUID = 1L;
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	process(request, response);
@@ -21,6 +24,7 @@ public class JoinService extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
 	}
+	
 	
 	private void process(HttpServletRequest request, HttpServletResponse response){
 		String url =request.getRequestURL().toString();
@@ -32,13 +36,13 @@ public class JoinService extends HttpServlet {
 				String name = request.getParameter("name");
 				String id = request.getParameter("id");
 				String password = request.getParameter("password");
-				
+				String ck = request.getParameter("checkuse");
+				System.out.println(ck);
 				MemberDao dao = new MemberDao();
 				
 				String a = dao.idCheck(id);
 				System.out.println(a);
 				System.out.println(id);
-
 				if(a.equals("1")){
 					dao.join(name, id, password);
 				viewpage = "/joinSuccess.jsp";
@@ -49,6 +53,7 @@ public class JoinService extends HttpServlet {
 					viewpage = "/index.jsp";
 
 				}
+				
 			}
 			 RequestDispatcher dispatcher = request.getRequestDispatcher(viewpage);
 			   

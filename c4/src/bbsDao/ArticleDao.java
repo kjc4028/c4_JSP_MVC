@@ -62,19 +62,45 @@ e.printStackTrace();
 
 	}
 
+	public void bbsModify(String bbsID, String title, String content) throws NamingException, SQLException{
+		
+		Connection conn = DBCPConnection.getConnection();
+		PreparedStatement pstmt = null;
+		
+		try {
+			
+			String sql = "update article set title = ?, content = ? where bbsID = ? ";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, title);
+			pstmt.setString(2, content);
+			pstmt.setString(3, bbsID);
+
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+		e.printStackTrace();
+		}finally {
+			JdbcUtil.close(pstmt);
+			JdbcUtil.close(conn);
+
+		}
+	
+	}
+	
 	public ArrayList<Article> search(String title) throws NamingException, SQLException{
 		Connection conn = DBCPConnection.getConnection();
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		ArrayList<Article> list = new ArrayList<Article>();
-		String SQL = "select * from article where title like ?; ";
+		String SQL = "select * from article where title like ? ";
 		try {
+			System.out.println(title);
 			System.out.println("검색 dao 수행");
 			pstmt = conn.prepareStatement(SQL);
-			 pstmt.setString(1, '%'+title+'%');
+			 pstmt.setString(1, "%"+title+"%");
 			 rs = pstmt.executeQuery();
 			 System.out.println(pstmt);
-		if(rs.next()){
+		
+			 while(rs.next()){
 			Article dto = new Article();
 			dto.setBbsID(rs.getInt(1));
 			dto.setUserID(rs.getString(2));
@@ -84,7 +110,11 @@ e.printStackTrace();
 			dto.setContent(rs.getString(6));
 			list.add(dto);
 		}
-			
+			 
+			 for(int j = 1; j < list.size(); j++){
+					System.out.println("리스트 출력 " +list.get(j).getTitle());
+					
+				}
 		} catch (Exception e) {
 e.printStackTrace();
 }finally {
@@ -217,7 +247,7 @@ e.printStackTrace();
 			pstmt.setInt(1, bbsID);
 			rs = pstmt.executeQuery();
 		
-
+			
 			if(rs.next()){
 				dto.setBbsID(rs.getInt(1));
 				dto.setUserID(rs.getString(2));

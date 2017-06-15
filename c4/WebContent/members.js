@@ -41,6 +41,11 @@ function infoConfirm() {
 		return;
 	}
 	
+	if(document.reg_frm.checkuse.value == 'false') {
+		alert("아이디를 중복확인 해주세요.");
+		return;
+	}
+	
 	document.reg_frm.submit();
 }
 

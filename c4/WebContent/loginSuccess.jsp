@@ -12,6 +12,7 @@
 <%
 	String id1 = request.getParameter("id");
 session.setAttribute("id2", id1);
+
 %>
 <%=session.getAttribute("id2") %> 님
 로그인 성공

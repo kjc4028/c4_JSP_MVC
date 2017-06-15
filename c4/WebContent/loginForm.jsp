@@ -30,7 +30,6 @@ background-color: orange;
 <body>
 <jsp:include page="home.jsp"></jsp:include>
 
-	<%request.setCharacterEncoding("utf-8"); %>
 
 <form action="/c4/loginAction.do" method="post" name ="lg_frm">
 <table border="1" style="border-width: 1px" >

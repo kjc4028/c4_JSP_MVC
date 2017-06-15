@@ -10,10 +10,14 @@ function checkID() {
 	var id = document.reg_frm.id.value;
 	if (id == '') {
 		alert('아이디를 입력하세요');
+		document.reg_frm.checkuse.value = false;
 		return;
+	}else if(id !=''){
+		document.reg_frm.checkuse.value = true;
+		var url = '/c4/idCheck.do?id=' + id;
+		window.open(url, '', 'width=300, height=350, left=0, top=0');
 	}
-	var url = '/c4/idCheck.do?id=' + id;
-	window.open(url, '', 'width=300, height=350, left=0, top=0');
+	
 
 }
 
@@ -59,6 +63,7 @@ top: 10px;
 
 	<%
 		request.setCharacterEncoding("utf-8");
+	
 	%>
 	&nbsp;
 	<form action="/c4/joinAction.do" method="post" name="reg_frm">
@@ -73,6 +78,7 @@ top: 10px;
 					style="ime-mode: disabled" /> 
 					<input onclick="checkID()"type="button" name="checker" value="중복확인" /></td>
 				<td>
+				<input type="hidden" name="checkuse" value="false">
 			<tr>
 				<th id="title">비밀번호</th>
 				<td><input type="password" name="password"></td>

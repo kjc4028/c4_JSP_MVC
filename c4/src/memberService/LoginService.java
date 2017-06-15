@@ -9,6 +9,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import javax.websocket.Session;
 
 import loginDao.LoginDao;
 
@@ -38,7 +40,6 @@ public class LoginService extends HttpServlet {
 		String viewpage = null;
 		String id = request.getParameter("id");
 		String password = request.getParameter("password");
-		
 		
 	
 		LoginDao logdao = new LoginDao();
