@@ -7,10 +7,14 @@
 <meta name="viewport" content="width=device-width" initial-scale="1">
 <link rel="stylesheet" href="css/bootstrap.css">
 <link rel="stylesheet" href="css/custom.css">
-<title>Insert title here</title>
+<title>메인페이지</title>
 </head>
 <body>
-<jsp:include page="home.jsp"></jsp:include>
+
+
+<jsp:include page="menu.jsp"></jsp:include>
+
+
 <br>
 <br>
 <br>

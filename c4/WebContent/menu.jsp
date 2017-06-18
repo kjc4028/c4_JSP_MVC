@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width" initial-scale="1">
 <link rel="stylesheet" href="css/bootstrap.css">
 <link rel="stylesheet" href="css/custom.css">
-<title>Insert title here</title>
+<title>¸Þ´º¹Ù</title>
 <style type="text/css">
 div {
 	

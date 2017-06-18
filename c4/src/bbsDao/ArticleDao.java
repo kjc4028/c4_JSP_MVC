@@ -61,7 +61,7 @@ e.printStackTrace();
 
 
 	}
-
+	
 	public void bbsModify(String bbsID, String title, String content) throws NamingException, SQLException{
 		
 		Connection conn = DBCPConnection.getConnection();

@@ -31,49 +31,28 @@
 </script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>전체 회원 목록</title>
+<meta name="viewport" content="width=device-width" initial-scale="1">
 <link rel="stylesheet" href="css/bootstrap.css">
 <link rel="stylesheet" href="css/custom.css">
 
 
-<style>
-table, th, td {
-	border-style: solid;
-	border-width: 1px;
-	text-align: center;
-}
-
-table {
-	table-layout: fixed;
-	width: 500px;
-}
-
-#tt {
-	position: relative;
-	left: 200px;
-	top: 50px;
-}
-
-#title {
-	text-align: center;
-	background-color: orange;
-}
-</style>
 </head>
 <body>
-	<jsp:include page="home.jsp"></jsp:include>
+	<jsp:include page="menu.jsp"></jsp:include>
 	
 
 		<div id="tt" class="category-list">
 		<form action="/c4/memberDelete.do" id="memberFrm" name="memberFrm"
 		method="post">
-			<table>
+			<table class="table table-striped" style="text-align: center; border: 1px solid #dddddd" >
+				<thead>
 				<tr>
-					<th id="title"><input type="checkbox" id = "allCheck"name="allCheck"></th>
-					<th id="title">이름</th>
-					<th id="title">아이디</th>
-					<th id="title">비밀번호</th>
+					<th id="title" style="background-color: #eeeeee; text-align: center;"><input type="checkbox" id = "allCheck"name="allCheck"></th>
+					<th id="title" style="background-color: #eeeeee; text-align: center;">이름</th>
+					<th id="title" style="background-color: #eeeeee; text-align: center;">아이디</th>
+					<th id="title" style="background-color: #eeeeee; text-align: center;">비밀번호</th>
 				</tr>
-
+</thead>
 				<%
 				MemberDao selectAll = new MemberDao();
 				ArrayList<MemberDto> dtos = selectAll.memberSelect();
@@ -96,9 +75,11 @@ table {
 			
 				}
 			%>
+			
+		
 
 			</table>
-						<input type="button" value="탈퇴시키기" onclick="delete2()">
+						<input type="button" class="btn btn-primary" value="탈퇴시키기" onclick="delete2()">
 		
 	</form>
 		</div>

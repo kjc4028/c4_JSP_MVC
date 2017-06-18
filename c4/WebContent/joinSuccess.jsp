@@ -4,10 +4,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>Insert title here</title>
+<title>회원가입 성공</title>
 </head>
 <body>
-<jsp:include page="home.jsp"></jsp:include>
+<jsp:include page="menu.jsp"></jsp:include>
 
 가입성공
 </body>

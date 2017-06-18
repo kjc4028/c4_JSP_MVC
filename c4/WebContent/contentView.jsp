@@ -17,51 +17,14 @@ function goList(){
 
 </script>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>Insert title here</title>
+<title>게시글 내용 페이지</title>
 <meta name="viewport" content="width=device-width" initial-scale="1">
 <link rel="stylesheet" href="css/bootstrap.css">
 <link rel="stylesheet" href="css/custom.css">
-<style type="text/css">
-table {
-position:relative;
-	top:150px;
-	margin-left:auto;
-	margin-right:auto;
-	text-align: center;
-}
 
-#btn {
-position: absolute;
-  top: 400px;
-  left: 550px;
- 
-}
-
-#btn1 {
-position: absolute;
-  top: 400px;
-  left: 650px;
- 
-}
-
-#btn2 {
-position: absolute;
-  top: 400px;
-  left: 720px;
- 
-}
-
-#btn3 {
-position: absolute;
-  top: 400px;
-  left: 820px;
- 
-}
-
-</style>
 </head>
 <body>
-	<jsp:include page="home.jsp"></jsp:include>
+	<jsp:include page="menu.jsp"></jsp:include>
 	<%
 		String userID = null;
 		if (session.getAttribute("id2") != null) {
@@ -91,15 +54,15 @@ position: absolute;
 		System.out.println(ID);
 
 	%>
-		<table border="1" width="500">
+			<table class="table table-striped" style="text-align: center; border: 1px solid #dddddd" >
 		<c:set var = "a" value="<%= article %>"/>
 	<!-- [JSTL 이용한 출력] -->
-	<tr  ><td colspan="2"  style="font-size: 20px; text-align: center;" >게시글 내용</td></tr>
-	<tr><th>글제목</th><td>${a.getTitle()} </td></tr>
-		<tr><th>작성자</th><td> ${a.getUserID()}</td></tr>
-		<tr><th>작성일자</th><td>${a.getRegdate()}</td></tr>
-		<tr><th>조회수</th><td> ${a.getReadcnt()}</td></tr>
-		<tr><th>글내용</th><td> ${a.getContent()}</td></tr>
+	<tr  ><td style="background-color: #eeeeee; text-align: center;" colspan="2" >게시글 내용</td></tr>
+	<tr><th style="background-color: #eeeeee; text-align: center;">글제목</th><td >${a.getTitle()} </td></tr>
+		<tr><th style="background-color: #eeeeee; text-align: center;">작성자</th><td> ${a.getUserID()}</td></tr>
+		<tr><th style="background-color: #eeeeee; text-align: center;">작성일자</th><td>${a.getRegdate()}</td></tr>
+		<tr><th style="background-color: #eeeeee; text-align: center;">조회수</th><td> ${a.getReadcnt()}</td></tr>
+		<tr><th style="background-color: #eeeeee; text-align: center;">글내용</th><td> ${a.getContent()}</td></tr>
 		
 		</table>
 		
@@ -114,19 +77,19 @@ position: absolute;
 
 	<%if(userID != null){ %>
 	<% if(!userID.equals(ID) ){%>
-		<input id = "btn" type="button" value="목록으로" onclick="location.href='bbsList.jsp';" >
-		<input id = "btn1"type="button" value="답변" onClick="location.href='/c4/ArticleReplyForm.do?bbsID=${a.getBbsID()}';">
+		<input id = "btn" class="btn btn-primary" type="button" value="목록으로" onclick="location.href='bbsList.jsp';" >
+		<input id = "btn1" class="btn btn-primary" type="button" value="답변" onClick="location.href='/c4/ArticleReplyForm.do?bbsID=${a.getBbsID()}';">
 	<%} %>
 	<% if(userID.equals(ID)){%>
-		<input id = "btn" type="button" value="목록으로" onclick="location.href='bbsList.jsp';" >
-		<input id = "btn1" type="button" value="답변" onClick="location.href='/c4/ArticleReplyForm.do?bbsID=${a.getBbsID()}';">
-		<input id = "btn2" type="button" value="삭제하기" onclick="location.href='/c4/ArticleSelfDelete.do?bbsID=${a.getBbsID()}';" >
-				<input id = "btn3" type="button" value="수정하기" onclick="location.href='/c4/ArticleSelfModifyView.do?bbsID=${a.getBbsID()}';" >
+		<input id = "btn" class="btn btn-primary" type="button" value="목록으로" onclick="location.href='bbsList.jsp';" >
+		<input id = "btn1"  class="btn btn-primary" type="button" value="답변" onClick="location.href='/c4/ArticleReplyForm.do?bbsID=${a.getBbsID()}';">
+		<input id = "btn2" class="btn btn-primary" type="button" value="삭제하기" onclick="location.href='/c4/ArticleSelfDelete.do?bbsID=${a.getBbsID()}';" >
+				<input id = "btn3" class="btn btn-primary" type="button" value="수정하기" onclick="location.href='/c4/ArticleSelfModifyView.do?bbsID=${a.getBbsID()}';" >
 		
 	<%} %>
 	<%} %>
 		<%if(userID == null){ %>
-		<input  id = "btn" type="button" value="목록으로" onclick="location.href='bbsList.jsp';" >
+		<input  id = "btn" class="btn btn-primary" type="button" value="목록으로" onclick="location.href='bbsList.jsp';" >
 	<%} %>
 </body>
 </html>

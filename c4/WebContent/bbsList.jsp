@@ -73,9 +73,9 @@ position: absolute;
 }
 #search1{
 position: absolute;
-  top: 120px;
-  left: 770px;
-  width: 500px;
+  top: 300px;
+  left: 850px;
+  width: 200px;
 }
 #head {
 	text-align: center;
@@ -110,7 +110,6 @@ if(request.getParameter("pageNumber") != null){
 	}
 %>
 <%
-
 	int pageno = toInt(request.getParameter("pageNumber"));
 	if(pageno<1){//현재 페이지
 		pageno = 1;
@@ -197,32 +196,35 @@ if(request.getParameter("pageNumber") != null){
 
 
 
-	<jsp:include page="home.jsp"></jsp:include>
+	<jsp:include page="menu.jsp"></jsp:include>
 	
-	<%if(userID != null){ %>
-	<%if(userID.equals("whd4028")){ %>
-<div id = "full">
-<div id = "search1">
+	<div id = "search1">
 	<form action="/c4/articleSearch.do">
 	
-	<input type="text" name = "search"/>
+	<input type="text" class="form-control" placeholder="검색" name = "search"/><input type="submit" value = "search" class="btn btn-primary "/>
 	
-	<input type="submit" value = "search"/>
+	
 
 </form>
 </div>
+	<%if(userID != null){ %>
+	<%if(userID.equals("whd4028")){ %>
+<div id = "full">
+
 <div id = "table1">
 	<form name="frm" id="frm" action="/c4/articleDelete.do" method="post">
-		<table  border="1" >
-			<tr>
-				<th id="head" width="50">&nbsp;<input type="checkbox" id="allCheck">&nbsp;
-				</th>
-				<th id="head" width="100">게시물 번호</th>
-				<th id="head" width="200">제목</th>
-				<th id="head" width="100">작성자</th>
-				<th id="head" width="180">등록일자</th>
-				<th id="head" width="50">조회수</th>
-			</tr>
+			<table class="table table-striped" style="text-align: center; border: 1px solid #dddddd" >
+	<thead>
+   <tr>
+    <th style="background-color: #eeeeee; text-align: center;">&nbsp;<input type="checkbox" id="allCheck"></th>
+   <th style="background-color: #eeeeee; text-align: center;">번호</th>
+      <th style="background-color: #eeeeee; text-align: center;">제목</th>
+      <th style="background-color: #eeeeee; text-align: center;">작성자</th>
+      <th style="background-color: #eeeeee; text-align: center;">작성일</th>
+         <th style="background-color: #eeeeee; text-align: center;">조회수</th>
+   </tr>
+   </thead>
+		
 			<%
 				Article dto = new Article();
 				ArticleDao dao = new ArticleDao();
@@ -261,8 +263,10 @@ if(request.getParameter("pageNumber") != null){
 			%>
 			
 			<tr>
-			<td colspan="6"><input type="button" value="글작성하기" onclick="goWrite()"> <input
-			type="button" value="삭제하기" onclick="delete1()">
+						<td colspan="6"><input type="button" value="글작성하기" class="btn btn-primary" onclick="goWrite()"> 
+			
+			<input
+			type="button" value="삭제하기" class="btn btn-primary" onclick="delete1()">
 
 
 
@@ -297,26 +301,19 @@ if(request.getParameter("pageNumber") != null){
 	<% if(!userID.equals("whd4028")) { %>
 	
 	<div id = "full">
-<div id = "search1">
-	<form action="/c4/articleSearch.do">
-	
-	<input type="text" name = "search"/>
-	
-	<input type="submit" value = "search"/>
 
-</form>
-</div>
 <div id = "table1">
 	<form name="frm" id="frm" action="/c4/articleDelete.do" method="post">
-		<table  border="1" >
-			<tr>
-				
-				<th id="head" width="100">게시물 번호</th>
-				<th id="head" width="200">제목</th>
-				<th id="head" width="100">작성자</th>
-				<th id="head" width="180">등록일자</th>
-				<th id="head" width="50">조회수</th>
-			</tr>
+		
+				<table class="table table-striped" style="text-align: center; border: 1px solid #dddddd" >
+	<thead>
+   <tr>
+   <th style="background-color: #eeeeee; text-align: center;">번호</th>
+      <th style="background-color: #eeeeee; text-align: center;">제목</th>
+      <th style="background-color: #eeeeee; text-align: center;">작성자</th>
+      <th style="background-color: #eeeeee; text-align: center;">작성일</th>
+         <th style="background-color: #eeeeee; text-align: center;">조회수</th>
+   </tr>
 			<%
 				Article dto = new Article();
 				ArticleDao dao = new ArticleDao();
@@ -353,7 +350,8 @@ if(request.getParameter("pageNumber") != null){
 			%>
 			
 			<tr>
-			<td colspan="6"><input type="button" value="글작성하기" onclick="goWrite()"> 
+						<td colspan="6"><input type="button" value="글작성하기" class="btn btn-primary" onclick="goWrite()"> 
+			
 
 
 		
@@ -389,26 +387,19 @@ if(request.getParameter("pageNumber") != null){
 	<% if(userID == null){ %>
 		
 	<div id = "full">
-<div id = "search1">
-	<form action="/c4/articleSearch.do">
-	
-	<input type="text" name = "search"/>
-	
-	<input type="submit" value = "search"/>
 
-</form>
-</div>
 <div id = "table1">
 	<form name="frm" id="frm" action="/c4/articleDelete.do" method="post">
-		<table  border="1" >
-			<tr>
-				
-				<th id="head" width="100">게시물 번호</th>
-				<th id="head" width="200">제목</th>
-				<th id="head" width="100">작성자</th>
-				<th id="head" width="180">등록일자</th>
-				<th id="head" width="50">조회수</th>
-			</tr>
+		<table class="table table-striped" style="text-align: center; border: 1px solid #dddddd" >
+	<thead>
+   <tr>
+   <th style="background-color: #eeeeee; text-align: center;">번호</th>
+      <th style="background-color: #eeeeee; text-align: center;">제목</th>
+      <th style="background-color: #eeeeee; text-align: center;">작성자</th>
+      <th style="background-color: #eeeeee; text-align: center;">작성일</th>
+         <th style="background-color: #eeeeee; text-align: center;">조회수</th>
+   </tr>
+   </thead>
 			<%
 				Article dto = new Article();
 				ArticleDao dao = new ArticleDao();
@@ -445,7 +436,7 @@ if(request.getParameter("pageNumber") != null){
 			%>
 			
 			<tr>
-			<td colspan="6"><input type="button" value="글작성하기" onclick="goWrite()"> 
+			<td colspan="6"><input type="button" value="글작성하기" class="btn btn-primary" onclick="goWrite()"> 
 
 
 		

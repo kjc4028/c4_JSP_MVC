@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>Insert title here</title>
+<title>아이디 사용 가능 알림 창</title>
 </head>
 <body>
 <% request.setCharacterEncoding("UTF-8"); %>

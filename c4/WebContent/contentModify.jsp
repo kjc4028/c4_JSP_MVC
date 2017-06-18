@@ -17,7 +17,7 @@ function goList(){
 <title>글 수정 페이지</title>
 </head>
 <body>
-	<jsp:include page="home.jsp"></jsp:include>
+	<jsp:include page="menu.jsp"></jsp:include>
 	<%
 		String userID = null;
 		if (session.getAttribute("userID") != null) {

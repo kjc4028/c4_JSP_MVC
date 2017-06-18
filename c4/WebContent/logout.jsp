@@ -4,10 +4,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>Insert title here</title>
+<title>로그아웃</title>
 </head>
 <body>
+
 <% session.invalidate(); %>
 <%response.sendRedirect("index.jsp"); %>
+
 </body>
 </html>

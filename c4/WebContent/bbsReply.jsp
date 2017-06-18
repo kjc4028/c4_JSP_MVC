@@ -7,7 +7,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+
+<title>답글 작성 페이지</title>
 </head>
 <body>
 <%
@@ -24,7 +25,7 @@
 
 	%>
 	
-	<jsp:include page="home.jsp"></jsp:include>
+	<jsp:include page="menu.jsp"></jsp:include>
 			<c:set var = "a" value="<%= article %>"/>
 
 	<form action="/c4/ArticleReply.do" method="post">

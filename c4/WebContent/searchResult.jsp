@@ -64,7 +64,7 @@ table {
 <script language="JavaScript" src="members.js"></script>
 </head>
 <body>
-	<jsp:include page="home.jsp"></jsp:include>
+	<jsp:include page="menu.jsp"></jsp:include>
 	<%
 		String userID = null;
 		if (session.getAttribute("id2") != null) {
@@ -85,14 +85,14 @@ if(request.getParameter("pageNumber") != null){
 <!--  관리자 이외의 사용자 -->
 <% if(!userID.equals("whd4028")){ %>
 <h1 align="center">검색 결과</h1>
-	<table border="1">
+			<table class="table table-striped" style="text-align: center; border: 1px solid #dddddd" >
 		<tr>
 			
-			<th id="head" width="100">게시물 번호</th>
-			<th id="head" width="200">제목</th>
-			<th id="head" width="100">작성자</th>
-			<th id="head" width="180">등록일자</th>
-			<th id="head" width="50">조회수</th>
+			<th id="head" style="background-color: #eeeeee; text-align: center;">게시물 번호</th>
+			<th id="head" style="background-color: #eeeeee; text-align: center;">제목</th>
+			<th id="head" style="background-color: #eeeeee; text-align: center;">작성자</th>
+			<th id="head" style="background-color: #eeeeee; text-align: center;">등록일자</th>
+			<th id="head" style="background-color: #eeeeee; text-align: center;">조회수</th>
 		</tr>
 		<% ArticleDao dao = new ArticleDao();
 
@@ -125,7 +125,7 @@ if(request.getParameter("pageNumber") != null){
 
 		<%} %>
 		<tr>
-			<td colspan="6"><input type="button" value="글작성하기"
+			<td colspan="6"><input type="button" class="btn btn-primary" value="글작성하기"
 				onclick="goWrite()"></td>
 		</tr>
 		</table>
@@ -134,16 +134,16 @@ if(request.getParameter("pageNumber") != null){
 		<!-- 관리자 접속 -->
 		<% if(userID.equals("whd4028")){ %>
 		<h1 align="center">검색 결과</h1>
-	<table border="1">
+			<table class="table table-striped" style="text-align: center; border: 1px solid #dddddd" >
 		<tr>
-			<th id="head" width="50">&nbsp;<input type="checkbox"
+			<th id="head" style="background-color: #eeeeee; text-align: center;">&nbsp;<input type="checkbox"
 				id="allCheck">&nbsp;
 			</th>
-			<th id="head" width="100">게시물 번호</th>
-			<th id="head" width="200">제목</th>
-			<th id="head" width="100">작성자</th>
-			<th id="head" width="180">등록일자</th>
-			<th id="head" width="50">조회수</th>
+			<th id="head" style="background-color: #eeeeee; text-align: center;">게시물 번호</th>
+			<th id="head" style="background-color: #eeeeee; text-align: center;">제목</th>
+			<th id="head" style="background-color: #eeeeee; text-align: center;">작성자</th>
+			<th id="head" style="background-color: #eeeeee; text-align: center;">등록일자</th>
+			<th id="head" style="background-color: #eeeeee; text-align: center;">조회수</th>
 		</tr>
 		<% ArticleDao dao = new ArticleDao();
 
@@ -177,8 +177,8 @@ if(request.getParameter("pageNumber") != null){
 
 		<%} %>
 		<tr>
-			<td colspan="6"><input type="button" value="글작성하기"
-				onclick="goWrite()"> <input type="button" value="삭제하기"
+			<td colspan="6"><input type="button" class="btn btn-primary" value="글작성하기"
+				onclick="goWrite()"> <input type="button" class="btn btn-primary" value="삭제하기"
 				onclick="delete1()"></td>
 		</tr>
 		<%} %>
@@ -187,13 +187,14 @@ if(request.getParameter("pageNumber") != null){
  <!-- 비로그인상태 -->
 		<% if(userID == null){ %>
 		<h1 align="center">검색 결과</h1>
-	<table border="1">
+		<table class="table table-striped" style="text-align: center; border: 1px solid #dddddd" >
 		<tr>
-			<th id="head" width="100">게시물 번호</th>
-			<th id="head" width="200">제목</th>
-			<th id="head" width="100">작성자</th>
-			<th id="head" width="180">등록일자</th>
-			<th id="head" width="50">조회수</th>
+			
+			<th id="head" style="background-color: #eeeeee; text-align: center;">게시물 번호</th>
+			<th id="head" style="background-color: #eeeeee; text-align: center;">제목</th>
+			<th id="head" style="background-color: #eeeeee; text-align: center;">작성자</th>
+			<th id="head" style="background-color: #eeeeee; text-align: center;">등록일자</th>
+			<th id="head" style="background-color: #eeeeee; text-align: center;">조회수</th>
 		</tr>
 		<% ArticleDao dao = new ArticleDao();
 
@@ -226,7 +227,7 @@ if(request.getParameter("pageNumber") != null){
 
 		<%} %>
 		<tr>
-			<td colspan="6"><input type="button" value="글작성하기"
+			<td colspan="6"><input class="btn btn-primary" type="button" value="글작성하기"
 				onclick="goWrite()"> </td>
 		</tr>
 		</table>

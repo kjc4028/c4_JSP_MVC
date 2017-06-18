@@ -56,17 +56,20 @@ position: relative;
 left: 50px;
 top: 10px;
 }
+#idcheck {
+ width: 100px;
+}
 </style>
 </head>
 <body>
-	<jsp:include page="home.jsp"></jsp:include>
+	<jsp:include page="menu.jsp"></jsp:include>
 
 	<%
 		request.setCharacterEncoding("utf-8");
 	
 	%>
 	&nbsp;
-	<form action="/c4/joinAction.do" method="post" name="reg_frm">
+<!-- 	<form action="/c4/joinAction.do" method="post" name="reg_frm">
 		<table border="1" style="border-width: 1px">
 			<tr>
 				<th id="title">이름</th>
@@ -87,8 +90,42 @@ top: 10px;
 				<td><input type="button" value="회원가입" onclick="infoConfirm()"></td>
 			</tr>
 		</table>
-	</form>
+	</form> -->
+
+	
+	 <div class="container">
+      <div class="col-lg-4"></div>
+      <div class="col-lg-4">
+         <div class="jumbotron" style="padding-top: 20px;">
+            <form method="post" action="/c4/joinAction.do"  name ="reg_frm">
+               <h3 style="text-align:center;">회원 가입 화면</h3>
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="이름" name="name" maxlength="20">
+               </div>
+               
+               <div class="form-group">
+                <input type="text" class="form-control" placeholder="아이디" name="id" maxlength="20"> 
+                <input type="button" class="btn btn-primary form-control" id = "idcheck" value="중복확인" onclick="checkID()" >
+                  <input type="hidden" name="checkuse" value="false">
+               </div>
+               <div class="form-group">
+                <input type="password" class="form-control" placeholder="비밀번호" name="password" maxlength="20">
+               </div>
+             
+               <input type="button" class="btn btn-primary form-control" value="회원가입" onclick="infoConfirm()">
+            </form>
+         </div>
+         <div class="col-lg-4"></div>
+      </div>
       <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
       <script src="js/bootstrap.js"></script>
+      </div>
+	
+	
+      <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+      <script src="js/bootstrap.js"></script>
+      
+      
+  
 </body>
 </html>
